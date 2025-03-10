@@ -1,10 +1,10 @@
-```markdown
+
 # Hand of the King AI Agent 🤖👑
 
 ![Game Banner](assets/banner.png) <!-- Add a banner image if available -->
 
 An intelligent MiniMax-based AI agent for the "Hand of the King" board game, inspired by *Game of Thrones*.  
-**Developed by [Your Name]** | **Game Engine by [Mohammad Momeni](https://github.com/Mohammad-Momeni)**
+**Developed by [Ali Salimkhani]** | **Game Engine by [Mohammad Momeni](https://github.com/Mohammad-Momeni)**
 
 ---
 
@@ -121,13 +121,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 For questions, contact [Your Email] or open an issue.
 ``` 
 
----
 
-### Key Improvements Over Existing README:
-1. **Visual Hierarchy**: Added emojis/sections for better readability.
-2. **Technical Details**: Explained MiniMax optimizations and evaluation metrics.
-3. **Usability**: Clear installation/execution steps with examples.
-4. **Comparisons**: Added performance table vs random agent.
-5. **Contributor Recognition**: Highlighted the game engine author.
-6. **Future-Proofing**: Added "Contributing" section for community input.
-```
