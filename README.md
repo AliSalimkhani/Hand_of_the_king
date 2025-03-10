@@ -119,6 +119,3 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 **🏆 May your agent sit on the Iron Throne!**  
 For questions, contact [Your Email] or open an issue.
-``` 
-
-
