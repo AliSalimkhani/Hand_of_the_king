@@ -1,121 +1,138 @@
+# Hand of the King AI Agent
 
-# Hand of the King AI Agent 🤖👑
+An intelligent MiniMax-based AI agent for the "Hand of the King" board game, inspired by *Game of Thrones*.
 
-![Game Banner](assets/banner.png) <!-- Add a banner image if available -->
-
-An intelligent MiniMax-based AI agent for the "Hand of the King" board game, inspired by *Game of Thrones*.  
-**Developed by [Ali Salimkhani]** | **Game Engine by [Mohammad Momeni](https://github.com/Mohammad-Momeni)**
-
----
-
-## 📖 Table of Contents
-- [Game Overview](#-game-overview)
-- [Agent Features](#-agent-features)
-- [Installation](#-installation)
-- [How to Play](#-how-to-play)
-- [MiniMax Strategy](#-minimax-strategy)
-- [Evaluation Metrics](#-evaluation-metrics)
-- [Contributing](#-contributing)
-- [License](#-license)
+Developed by Ali Salimkhani  
+Game Engine by [Mohammad Momeni](https://github.com/Mohammad-Momeni/Hand-of-the-King)
 
 ---
 
-## 🏰 Game Overview
-In **Hand of the King**, two players compete to control Westeros by strategically moving Varys across a 6x6 grid of character cards. Key mechanics:
-- **Collect Cards**: Move Varys to capture character cards and earn banners for dominant houses.
-- **Win Condition**: Player with the most banners wins. Ties are broken by house card counts.
-- **Strategic Depth**: Houses have varying values (e.g., Tully cards are rare but high-value).
+## Table of Contents
 
-![Game Screenshot](assets/screenshot.png) <!-- Add screenshot if available -->
-
----
-
-## 🚀 Agent Features
-- **MiniMax Algorithm** with Alpha-Beta Pruning for optimal decision-making.
-- **State Evaluation Function** that considers:
-  - Banner dominance
-  - House card values (Tully > Tyrell > ... > Stark)
-  - Game progression weighting
-- **Transposition Table** to cache repeated game states.
-- **Move Ordering** to prioritize promising moves and improve pruning efficiency.
+- [Game Overview](#game-overview)
+- [Agent Features](#agent-features)
+- [Installation](#installation)
+- [How to Play](#how-to-play)
+- [MiniMax Strategy](#minimax-strategy)
+- [Evaluation Metrics](#evaluation-metrics)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## ⚙️ Installation
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/[YourUsername]/HandOfTheKing-AI.git
-   cd HandOfTheKing-AI
-   ```
+## Game Overview
 
-2. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt  # Ensure pygame, numpy, etc. are listed
-   ```
+Hand of the King is a two-player competitive strategy game played on a 6x6 grid of character cards. Players move Varys to collect house cards and acquire banners. The player with the most banners wins. In case of a tie, the winner is determined by the total number of cards of tied houses.
 
-3. **Run the Game**:
-   ```bash
-   # Human vs AI
-   python main.py --player1 human --player2 minimax_agent
+Strategic complexity arises from the differing rarity and value of house cards. For example, Tully cards offer a higher value-to-rarity ratio compared to houses like Stark.
 
-   # AI vs AI (MiniMax vs Random)
-   python main.py --player1 minimax_agent --player2 random_agent
-   ```
+<!-- Add game screenshot if available -->
 
 ---
 
-## 🎮 How to Play
-- **Human Controls**: Click adjacent cards to move Varys.
-- **AI Controls**: Automatically calculates moves using MiniMax.
-- **Key Arguments**:
-  - `--depth [N]`: Set MiniMax search depth (default: 5).
-  - `--load [file]`: Load a preconfigured board state.
+## Agent Features
+
+- MiniMax search with Alpha-Beta Pruning.
+- State evaluation function considering:
+  - Banner control advantage.
+  - House-specific card values (e.g., Tully > Tyrell > Baratheon > Stark).
+  - Temporal weighting based on game progression.
+- Transposition table to avoid re-evaluating previously seen states.
+- Move ordering for more efficient pruning.
 
 ---
 
-## 🧠 MiniMax Strategy
-### State Evaluation
-The agent evaluates game states using:
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/AliSalimkhani/HandOfTheKing-AI.git
+cd HandOfTheKing-AI
+````
+
+---
+
+## How to Play
+
+### Human vs AI
+
+```bash
+python main.py --player1 human --player2 minimax_agent
+```
+
+### AI vs AI (MiniMax vs Random)
+
+```bash
+python main.py --player1 minimax_agent --player2 random_agent
+```
+
+### Controls
+
+* Human: Click on adjacent cards to move Varys.
+* AI: Automatically selects optimal move using MiniMax.
+
+### Optional Parameters
+
+```bash
+--depth [N]         # Set the MiniMax search depth (default: 5)
+--load [file_path]  # Load a predefined board state from a file
+```
+
+---
+
+## MiniMax Strategy
+
+### Evaluation Function
+
 ```python
 def evaluate_state(cards, player1, player2):
-    # Banner advantage (weighted by game progress)
-    # Card values based on house rarity
-    # Strategic positioning of Varys
+    # Calculates weighted sum of banner advantage and house card values
     return banner_score * banner_weight + card_score
 ```
 
-### Optimization Techniques
-- **Alpha-Beta Pruning**: Reduces search space by 40-60%.
-- **Transposition Table**: Avoids re-evaluating identical states.
-- **Move Ordering**: Sorts moves by heuristic quality for faster pruning.
+### Optimizations
+
+* **Alpha-Beta Pruning**: Prunes irrelevant branches of the search tree.
+* **Transposition Table**: Caches evaluated states to avoid redundancy.
+* **Move Ordering**: Sorts moves to maximize pruning effectiveness.
 
 ---
 
-## 📊 Evaluation Metrics
+## Evaluation Metrics
+
 | Metric         | MiniMax Agent | Random Agent |
-|----------------|---------------|--------------|
+| -------------- | ------------- | ------------ |
 | Win Rate (%)   | 92            | 8            |
-| Avg Depth      | 5             | -            |
+| Average Depth  | 5             | -            |
 | Move Time (ms) | 1200          | 10           |
 
-**To Test Against the Reference Agent**:  
+Run benchmark against a reference agent:
+
 ```bash
 python main.py --player1 minimax_agent --player2 reference_agent
 ```
 
 ---
 
-## 🤝 Contributing
+## Contributing
+
 1. Fork the repository.
-2. Implement enhancements (e.g., neural networks, MCTS).
-3. Submit a pull request with detailed notes.
+2. Implement new features or improvements (e.g., Neural Networks, MCTS).
+3. Submit a pull request with detailed documentation of changes.
 
 ---
 
-## 📜 License
-MIT License. See [LICENSE](LICENSE) for details.
+## License
+
+MIT License. See [LICENSE](./LICENSE) for details.
 
 ---
 
-**🏆 May your agent sit on the Iron Throne!**  
-For questions, contact [Your Email] or open an issue.
+## Contact
+
+For technical questions or bug reports, contact:
+[alisalimkhani2004@gmail.com](mailto:alisalimkhani2004@gmail.com)
+
+```
+
