@@ -132,7 +132,4 @@ MIT License. See [LICENSE](./LICENSE) for details.
 ## Contact
 
 For technical questions or bug reports, contact:
-[alisalimkhani2004@gmail.com](mailto:alisalimkhani2004@gmail.com)
-
-```
-
+[my email](mailto:alisalimkhani2004@gmail.com)
